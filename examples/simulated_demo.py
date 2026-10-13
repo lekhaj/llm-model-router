@@ -27,7 +27,8 @@ def make_model(pass_rate: float):
 
 def is_valid_json(text: str) -> bool:
     try:
-        return "summary" in json.loads(text)
+        value = json.loads(text)
+        return isinstance(value, dict) and "summary" in value
     except ValueError:
         return False
 
